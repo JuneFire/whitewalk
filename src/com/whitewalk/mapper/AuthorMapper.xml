@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whitewalk.dao.IAuthorDao">
+	<resultMap type="Author" id="authorResultMap">
+		<id property="id" column="ID"/>
+		<result property="userId" column="USERID"/>
+		<result property="penName" column="PENNAME"/>
+		<result property="mail" column="MAIL"/>
+		<result property="realname" column="REALNAME"/>
+		<result property="idCard" column="IDCARD"/>
+		<result property="tel" column="TEL"/>
+	</resultMap>
+	
+	<select id="findAll" resultType="Author">
+		select * from author
+	</select>
+	<insert id="addAuthor" parameterType="Author" >
+		insert into author(ID,USERID,PENNAME,MAIL,REALNAME,IDCARD,TEL) values(#{id},#{userId},#{penName},#{mail},#{realname},#{idCard},#{tel})
+	</insert>
+	
+	<select id="findAuthorById" parameterType="int" resultType="author">
+		select * from author where ID=#{id}
+	</select>
+	<update id="updateAuthor" parameterType="author">
+		update author set PENNAME=#{penName},MAIL=#{mail},REALNAME=#{realname},IDCARD=#{idCard},TEL=#{tel} where ID=#{id}
+	</update>
+	<delete id="deleteAuthor" parameterType="int">
+		delete from author where ID=#{id}
+	</delete>
+	
+	<select id="findAuthorCount" resultType="int">
+		select count(*) from author
+	</select>
+</mapper>

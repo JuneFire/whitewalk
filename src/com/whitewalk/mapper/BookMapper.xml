@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whitewalk.dao.IBookDao">
+	
+	<!-- 分页查询有所有图书信息 -->
+	<select id="findAll" resultType="book"> 
+		select bookId,title,author,hits,grade,substr(synopsis,1,50) as synopsis from book
+	</select>
+	
+	<!-- 分页查询有所有图书信息 -->
+	<select id="findAllWithPage" resultType="book"> 
+		select * from book
+	</select>
+	
+	
+	
+	
+	<!-- 查询系统所有图书的数 -->
+	<select id="findBookCount" resultType="int">
+		select count(*) from book
+	</select>
+	
+	
+	<select id="findBookById" parameterType="int" resultType="book">
+		select * from book where bookId=#{bookId}
+	</select>
+	
+	
+</mapper>

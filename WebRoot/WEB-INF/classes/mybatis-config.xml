@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 配置实体类别名 -->
+	<typeAliases>
+		
+		<typeAlias type="com.whitewalk.entity.UserInfo" alias="userinfo"/>
+		
+		<typeAlias type="com.whitewalk.entity.Book" alias="book"/>
+
+		<typeAlias type="com.whitewalk.entity.BookGrade" alias="bookGrade"/>
+
+		<typeAlias type="com.whitewalk.entity.Author" alias="author"/>
+		
+		<typeAlias type="com.whitewalk.entity.UserBookMarks" alias="userBookMarks"/>
+		
+		<typeAlias type="com.whitewalk.entity.BookSection" alias="bookSection"/>
+		
+	</typeAliases>
+	<plugins>  
+   		<plugin interceptor="com.whitewalk.util.PageHelper"></plugin>  
+ 	</plugins>  
+	<!-- 配置mybtais环境 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 事务管理器 -->
+			<transactionManager type="jdbc"></transactionManager>
+			<!-- 配置数据源 -->
+			<dataSource type="POOLED">
+				<!-- 驱动 -->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<!-- url -->
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+				<!-- username -->
+				<property name="username" value="whitewalk"/>
+				<!-- password -->
+				<property name="password" value="123456"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 配置映射 -->
+	<mappers>
+		<mapper resource="com/whitewalk/mapper/BookMapper.xml"/>
+		<mapper resource="com/whitewalk/mapper/AuthorMapper.xml"/>
+		<mapper resource="com/whitewalk/mapper/BookGradeMapper.xml"/>
+		<mapper resource="com/whitewalk/mapper/UserInfoMapper.xml"/>
+		<mapper resource="com/whitewalk/mapper/UserBookMarksMapper.xml"/>
+		<mapper resource="com/whitewalk/mapper/UserMessageMapper.xml"/>
+		<mapper resource="com/whitewalk/mapper/UserCollectionMapper.xml"/>
+		<mapper resource="com/whitewalk/mapper/BookSectionMapper.xml"/>
+	
+	</mappers>
+</configuration>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whitewalk.dao.IBookGradeDao">
+	
+	<!-- 调用存储过程保存图书评分数据 -->
+	<insert id="saveBookGrade" parameterMap="newBookGrade" statementType="CALLABLE">
+		CALL insert_book_grade(?,?,?)
+	</insert>
+	 <parameterMap type="java.util.Map" id="newBookGrade">
+		<parameter property="userId" mode="IN" jdbcType="INTEGER"/>
+		<parameter property="bookId" mode="IN" jdbcType="INTEGER"/>
+		<parameter property="grade" mode="IN" jdbcType="INTEGER"/>
+	</parameterMap> 
+</mapper>

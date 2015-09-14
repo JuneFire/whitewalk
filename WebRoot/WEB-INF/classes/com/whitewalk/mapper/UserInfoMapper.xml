@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whitewalk.dao.IUserInfoDao">
+
+	<insert id="saveUserInfo" parameterType="userinfo">
+		INSERT INTO USERINFO VALUES(SEQ_USERINFO.NEXTVAL,#{userName},#{userPwd},1,#{userGhostB},null,null,null)
+	</insert>
+
+	<select id="findUserInfoByUserName" parameterType="String" resultType="userinfo">
+		SELECT * FROM USERINFO WHERE USERNAME=#{userName}
+	</select>
+
+	<!-- 获取系统已注册的用户数 -->
+	<select id="findUserCount" resultType="int">
+		select count(*) from userinfo
+	</select>
+	
+	<select id="login" parameterType="userinfo" resultType="userinfo">
+		SELECT * FROM USERINFO where USERNAME=#{userName} and USERPWD=#{userPwd}
+	</select>
+
+</mapper>
